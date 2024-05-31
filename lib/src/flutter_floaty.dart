@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'config/config.dart';
+
 /// Signature for a function that handles the start of a drag event.
 typedef DragStartCallback = void Function(DragStartDetails details);
 
@@ -161,7 +163,7 @@ class _FlutterFloatyState extends State<FlutterFloaty>
       context.findAncestorWidgetOfExactType<Stack>() != null,
       'FlutterFloaty must be placed inside a Stack widget.',
     );
-    final screenWidth = MediaQuery.of(context).size.width;
+    final screenWidth = Config.dynamicWidth(context);
     assert(
       widget.initialWidth <= screenWidth,
       'initialWidth (${widget.initialWidth}) must not be greater than screen '
@@ -172,6 +174,7 @@ class _FlutterFloatyState extends State<FlutterFloaty>
   @override
   Widget build(BuildContext context) {
     _initAsserts(context);
+
     return Positioned(
       left: xPosition,
       top: yPosition,
@@ -238,11 +241,8 @@ class _FlutterFloatyState extends State<FlutterFloaty>
       final newX = xPosition + details.delta.dx;
       final newY = yPosition + details.delta.dy;
 
-      final screenWidth = MediaQuery.of(context).size.width;
-      final screenHeight = MediaQuery.of(context).size.height;
-
-      xPosition = newX.clamp(0.0, screenWidth - width);
-      yPosition = newY.clamp(0.0, screenHeight - height);
+      xPosition = newX.clamp(0.0, Config.dynamicWidth(context) - width);
+      yPosition = newY.clamp(0.0, Config.dynamicHeight(context) - height);
     });
 
     if (widget.onDragUpdate != null) {
