@@ -1,7 +1,7 @@
 
 
 <p align="center">
-  <img align="center" height="300"  src="https://github.com/JordyHers/flutter_floaty/assets/49708438/ddd4e041-a4b6-4821-9087-6c8a210e26a0">
+  <img align="center" height="300"  src="https://github-production-user-asset-6210df.s3.amazonaws.com/49708438/335539654-ddd4e041-a4b6-4821-9087-6c8a210e26a0.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAVCODYLSA53PQK4ZA%2F20240531%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20240531T134111Z&X-Amz-Expires=300&X-Amz-Signature=26578f7229408d585f2409f15c163dd609ba9c69f39a9030d03b1611c687e1dc&X-Amz-SignedHeaders=host&actor_id=49708438&key_id=0&repo_id=808540541">
  </p>
 
 # flutter_floaty
@@ -19,7 +19,7 @@ This repository contains various examples of floating action buttons using the `
 
 ## Demo
 
-  <img height="300"  src="https://github.com/JordyHers/flutter_floaty/assets/49708438/4043599c-5ad6-440e-ab8b-952dd0dbfadf">
+  <img height="300"  src="https://github-production-user-asset-6210df.s3.amazonaws.com/49708438/335576956-4043599c-5ad6-440e-ab8b-952dd0dbfadf.gif?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAVCODYLSA53PQK4ZA%2F20240531%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20240531T134151Z&X-Amz-Expires=300&X-Amz-Signature=fa8e301f8e4cd0baed94901776a2f294763f1c635d81123933293cd29b2f5880&X-Amz-SignedHeaders=host&actor_id=49708438&key_id=0&repo_id=808540541">
 
 
 ## Examples
@@ -344,12 +344,12 @@ Here are the parameters used in the `FlutterFloaty` widget:
 
 1. **Clone the repository:**
    ```sh
-   git clone https://github.com/yourusername/flutter_floaty_examples.git
+   git clone https://github.com/jordyhers/flutter_floaty.git
    ```
 
 2. **Navigate to the project directory:**
    ```sh
-   cd flutter_floaty_examples
+   cd flutter_floaty
    ```
 
 3. **Install dependencies:**
