@@ -1,0 +1,32 @@
+name: flutter_floaty
+description: Floating and draggable flutter button
+version: 0.1.0+1
+publish_to: none
+
+environment:
+  sdk: "^3.3.0"
+
+flutter:
+  plugin:
+    platforms:
+      android:
+        default_package: flutter_floaty_android
+      ios:
+        default_package: flutter_floaty_ios
+
+dependencies:
+  flutter:
+    sdk: flutter
+  flutter_floaty_android:
+    path: ../flutter_floaty_android
+  flutter_floaty_ios:
+    path: ../flutter_floaty_ios
+  flutter_floaty_platform_interface:
+    path: ../flutter_floaty_platform_interface
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  mocktail: ^1.0.3
+  plugin_platform_interface: ^2.1.8
+  very_good_analysis: ^5.1.0
