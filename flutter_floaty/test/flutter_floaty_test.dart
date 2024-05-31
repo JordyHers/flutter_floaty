@@ -30,7 +30,7 @@ void main() {
 
   testWidgets('FlutterFloaty responds to tap gestures',
       (WidgetTester tester) async {
-    bool tapped = false;
+    var tapped = false;
 
     await tester.pumpWidget(
       MaterialApp(
