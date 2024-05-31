@@ -1,8 +1,5 @@
 
-
-<p align="center">
-  <img align="center" height="300"  src="https://github-production-user-asset-6210df.s3.amazonaws.com/49708438/335539654-ddd4e041-a4b6-4821-9087-6c8a210e26a0.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAVCODYLSA53PQK4ZA%2F20240531%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20240531T134111Z&X-Amz-Expires=300&X-Amz-Signature=26578f7229408d585f2409f15c163dd609ba9c69f39a9030d03b1611c687e1dc&X-Amz-SignedHeaders=host&actor_id=49708438&key_id=0&repo_id=808540541">
- </p>
+![FlutterFloaty](https://github.com/JordyHers/flutter_floaty/assets/49708438/9442d2b0-4a02-40d1-bb14-cccebc380e6d)
 
 # flutter_floaty
 
@@ -19,7 +16,8 @@ This repository contains various examples of floating action buttons using the `
 
 ## Demo
 
-  <img height="300"  src="https://github-production-user-asset-6210df.s3.amazonaws.com/49708438/335576956-4043599c-5ad6-440e-ab8b-952dd0dbfadf.gif?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAVCODYLSA53PQK4ZA%2F20240531%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20240531T134151Z&X-Amz-Expires=300&X-Amz-Signature=fa8e301f8e4cd0baed94901776a2f294763f1c635d81123933293cd29b2f5880&X-Amz-SignedHeaders=host&actor_id=49708438&key_id=0&repo_id=808540541">
+<img src ="https://github.com/JordyHers/flutter_floaty/assets/49708438/690fd953-c320-4f0c-a7cb-c4d3907350fe" width= "313">
+<img width="328" alt="Screenshot 2024-05-31 at 16 28 57" src="https://github.com/JordyHers/flutter_floaty/assets/49708438/e36cae7d-0090-457e-9527-133b9db7863f">
 
 
 ## Examples
