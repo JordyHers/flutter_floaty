@@ -36,7 +36,7 @@ FlutterFloaty(
   ),
   backgroundColor: Colors.blue,
   onDragBackgroundColor: Colors.blueAccent,
-  borderRadius: BorderRadius.circular(10),
+  borderRadius: 10,
   growingFactor: 20,
 )
 ```
@@ -135,7 +135,7 @@ FlutterFloaty(
 )
 ```
 
-### Complex Example
+## Complex Example
 
 ```dart
 import 'package:flutter/material.dart';
