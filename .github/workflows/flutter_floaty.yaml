@@ -32,7 +32,7 @@ jobs:
       flutter_channel: stable
       flutter_version: 3.19.0
       working_directory: flutter_floaty
-
+      min_coverage: 80
 
   android:
     runs-on: macos-latest
