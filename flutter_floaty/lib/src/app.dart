@@ -14,9 +14,10 @@ typedef WidgetBuilder = Widget Function(BuildContext context);
 
 /// A widget that can be placed, dragged, and dropped anywhere on the screen.
 ///
-/// [FlutterFloaty] allows users to interact with the widget through drag gestures.
-/// It supports customizations for the drag start, update, and end events.
-/// It also accepts a builder function to display the content within the draggable area.
+/// [FlutterFloaty] allows users to interact with the widget through drag
+/// gestures.It supports customizations for the drag start, update, and end
+/// events. It also accepts a builder function to display the content within
+/// the draggable area.
 class FlutterFloaty extends StatefulWidget {
   /// Creates a floating draggable widget.
   ///
@@ -163,7 +164,8 @@ class _FlutterFloatyState extends State<FlutterFloaty>
     final screenWidth = MediaQuery.of(context).size.width;
     assert(
       widget.initialWidth <= screenWidth,
-      'initialWidth (${widget.initialWidth}) must not be greater than screen width ($screenWidth).',
+      'initialWidth (${widget.initialWidth}) must not be greater than screen '
+      'width ($screenWidth).',
     );
   }
 
