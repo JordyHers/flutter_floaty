@@ -1,5 +1,8 @@
 
-![FlutterFloaty](https://github.com/JordyHers/flutter_floaty/assets/49708438/ddd4e041-a4b6-4821-9087-6c8a210e26a0)
+
+<p align="center">
+  <img align="center" height="300"  src="https://github.com/JordyHers/flutter_floaty/assets/49708438/ddd4e041-a4b6-4821-9087-6c8a210e26a0">
+ </p>
 
 # flutter_floaty
 
@@ -16,7 +19,7 @@ This repository contains various examples of floating action buttons using the `
 
 ## Demo
 
-https://github.com/JordyHers/flutter_floaty/assets/49708438/14f63af5-8335-448e-9142-0331940e0782
+  <img height="300"  src="https://github.com/JordyHers/flutter_floaty/assets/49708438/4043599c-5ad6-440e-ab8b-952dd0dbfadf">
 
 
 ## Examples

@@ -31,7 +31,7 @@ jobs:
     with:
       flutter_channel: stable
       flutter_version: 3.19.0
-      working_directory: flutter_floaty
+      working_directory: .
       min_coverage: 80
 
   android:
@@ -39,7 +39,7 @@ jobs:
 
     defaults:
       run:
-        working-directory: flutter_floaty/example
+        working-directory: example
 
     steps:
       - uses: actions/checkout@v4
@@ -58,7 +58,7 @@ jobs:
 
     defaults:
       run:
-        working-directory: flutter_floaty/example
+        working-directory: example
 
     steps:
       - uses: actions/checkout@v4
