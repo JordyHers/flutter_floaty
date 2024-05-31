@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-
-import 'config/config.dart';
+import 'package:flutter_floaty/src/config/config.dart';
 
 /// Signature for a function that handles the start of a drag event.
 typedef DragStartCallback = void Function(DragStartDetails details);
