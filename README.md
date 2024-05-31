@@ -1,5 +1,8 @@
 
-![FlutterFloaty](https://github.com/JordyHers/flutter_floaty/assets/49708438/ddd4e041-a4b6-4821-9087-6c8a210e26a0)
+
+<p align="center">
+  <img align="center" height="400"  src="https://github.com/JordyHers/flutter_floaty/assets/49708438/ddd4e041-a4b6-4821-9087-6c8a210e26a0">
+ </p>
 
 # flutter_floaty
 
