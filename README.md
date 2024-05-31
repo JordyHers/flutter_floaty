@@ -16,7 +16,10 @@ This repository contains various examples of floating action buttons using the `
 
 ## Demo
 
-<img src ="https://github.com/JordyHers/flutter_floaty/assets/49708438/690fd953-c320-4f0c-a7cb-c4d3907350fe" width= "313">
+
+
+https://github.com/JordyHers/flutter_floaty/assets/49708438/a3977a82-ead0-41aa-b712-f56f8ebaa40c
+
 
 
 ## Examples
