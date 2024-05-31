@@ -59,7 +59,7 @@ FlutterFloaty(
   ),
   backgroundColor: Colors.green,
   onDragBackgroundColor: Colors.greenAccent,
-  borderRadius: BorderRadius.circular(30),
+  borderRadius: 30,
   growingFactor: 10,
 )
 ```
@@ -82,7 +82,7 @@ FlutterFloaty(
   ),
   backgroundColor: Colors.red,
   onDragBackgroundColor: Colors.redAccent,
-  borderRadius: BorderRadius.circular(0),
+  borderRadius: 0,
   growingFactor: 15,
 )
 ```
@@ -105,7 +105,7 @@ FlutterFloaty(
   ),
   backgroundColor: Colors.purple,
   onDragBackgroundColor: Colors.purpleAccent,
-  borderRadius: BorderRadius.circular(40),
+  borderRadius: 40,
   growingFactor: 20,
 )
 ```
@@ -126,7 +126,7 @@ FlutterFloaty(
   ),
   backgroundColor: Colors.orange,
   onDragBackgroundColor: Colors.orangeAccent,
-  borderRadius: BorderRadius.circular(25),
+  borderRadius: 25,
   growingFactor: 15,
   shadow: BoxShadow(
     color: Colors.black.withOpacity(0.5),
