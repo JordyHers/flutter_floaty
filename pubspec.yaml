@@ -24,6 +24,9 @@ platforms:
 #licence supported
 license: MIT
 
+false_secrets:
+  - README.md
+
 environment:
   sdk: "^3.3.0"
   flutter: ">=3.19.0"
