@@ -1,6 +1,6 @@
-## 0.1.3
+## 0.1.4
 
-* Broken images in readme
+* Fix Broken images in readme
 
 ## 0.1.0+2
 
