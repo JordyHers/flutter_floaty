@@ -55,7 +55,6 @@ void main() {
 
     await tester.tap(find.text('Floaty'));
     await tester.pump();
-
     expect(tapped, isTrue);
   });
 
@@ -79,10 +78,8 @@ void main() {
     );
 
     final initialPosition = tester.getTopLeft(find.text('Floaty'));
-
     await tester.drag(find.text('Floaty'), const Offset(200, 200));
     await tester.pumpAndSettle();
-
     final newPosition = tester.getTopLeft(find.text('Floaty'));
 
     expect(newPosition, isNot(initialPosition));
