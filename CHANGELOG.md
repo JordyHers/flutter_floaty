@@ -1,3 +1,7 @@
+## 0.1.6
+
+* Improve readme content
+
 ## 0.1.5
 
 * Fix Broken images in readme

@@ -96,7 +96,7 @@ class _HomePageState extends State<HomePage> {
                   padding: const EdgeInsets.symmetric(horizontal: 20),
                   child: LinearProgressIndicator(
                     value: progress,
-                    color: Colors.blue,
+                    color: Colors.red,
                     backgroundColor: Colors.grey,
                   ),
                 ),
@@ -119,6 +119,12 @@ class _HomePageState extends State<HomePage> {
               decoration: BoxDecoration(
                 color: Colors.black,
                 borderRadius: BorderRadius.circular(10),
+                image: const DecorationImage(
+                  fit: BoxFit.cover,
+                  image: NetworkImage(
+                    'https://i3.ytimg.com/vi/erLk59H86ww/maxresdefault.jpg',
+                  ),
+                ),
               ),
               child: const Center(
                 child: Icon(
@@ -149,6 +155,50 @@ class _HomePageState extends State<HomePage> {
             onDragBackgroundColor: Colors.transparent,
             borderRadius: 35,
             growingFactor: 5,
+          ),
+
+          FlutterFloaty(
+            initialWidth: 200,
+            initialHeight: 50,
+            initialY: 100,
+            initialX: 100,
+            pinned: true,
+            builder: (context) => const Text(
+              'Pinned Flutter Floaty 🎉',
+              style: TextStyle(color: Colors.white),
+            ),
+            backgroundColor: Colors.blue,
+            onDragBackgroundColor: Colors.blueAccent,
+          ),
+          FlutterFloaty(
+            initialWidth: 100,
+            initialHeight: 100,
+            initialX: 200,
+            initialY: 200,
+            builder: (context) => const Center(
+              child: Text(
+                'Square',
+                style: TextStyle(color: Colors.white),
+              ),
+            ),
+            backgroundColor: Colors.red,
+            onDragBackgroundColor: Colors.redAccent,
+            borderRadius: 0,
+            growingFactor: 15,
+          ),
+          FlutterFloaty(
+            initialWidth: 60,
+            initialHeight: 60,
+            initialX: 100,
+            initialY: 300,
+            builder: (context) => const Icon(
+              Icons.add,
+              color: Colors.white,
+            ),
+            backgroundColor: Colors.green,
+            onDragBackgroundColor: Colors.greenAccent,
+            borderRadius: 30,
+            growingFactor: 10,
           ),
           FlutterFloaty(
             initialWidth: 70,
