@@ -39,7 +39,7 @@ jobs:
 
     defaults:
       run:
-        working-directory: flutter_floaty/example
+        working-directory: example
 
     steps:
       - uses: actions/checkout@v4
@@ -58,7 +58,7 @@ jobs:
 
     defaults:
       run:
-        working-directory: flutter_floaty/example
+        working-directory: example
 
     steps:
       - uses: actions/checkout@v4
