@@ -1,6 +1,7 @@
+
+![FlutterFloaty](https://github.com/JordyHers/flutter_floaty/assets/49708438/ddd4e041-a4b6-4821-9087-6c8a210e26a0)
+
 # flutter_floaty
-
-
 
 This repository contains various examples of floating action buttons using the `FlutterFloaty` widget in Flutter. The `FlutterFloaty` widget allows users to create customizable, draggable, and animated floating buttons.
 
