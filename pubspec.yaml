@@ -8,11 +8,21 @@ description:  >-
 version: 0.1.0+1
 
 #package homepage:
-homepage: https://github.com/JordyHers/flutter_resume_template
+homepage: https://github.com/JordyHers/flutter_floaty
 
 #package repository
-repository: https://github.com/JordyHers/flutter_resume_template
+repository: https://github.com/JordyHers/flutter_floaty
 
+funding:
+  - https://patreon.com/user?u=91968185
+
+#supported platforms
+platforms:
+  android:
+  ios:
+
+#licence supported
+license: MIT
 
 environment:
   sdk: "^3.3.0"

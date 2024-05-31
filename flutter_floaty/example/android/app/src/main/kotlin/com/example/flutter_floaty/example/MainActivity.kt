@@ -1,4 +1,4 @@
-package com.example.verygoodcore.example
+package com.jordyhers.flutterfloaty
 
 import io.flutter.embedding.android.FlutterActivity
 

@@ -30,6 +30,9 @@ class _HomePageState extends State<HomePage> {
           FlutterFloaty(
             initialWidth: 200,
             initialHeight: 50,
+            initialY: 30,
+            initialX: 200,
+            pinned: true,
             builder: (context) => const Text(
               'Hello, World!',
               style: TextStyle(color: Colors.black),
