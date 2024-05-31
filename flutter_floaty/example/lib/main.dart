@@ -42,7 +42,7 @@ class _HomePageState extends State<HomePage> {
 
   void _startProgress() {
     Future.doWhile(() async {
-      await Future.delayed(const Duration(seconds: 1));
+      await Future<void>.delayed(const Duration(seconds: 1));
       if (!isPlaying) return false;
       setState(() {
         elapsed += const Duration(seconds: 1);
@@ -107,10 +107,7 @@ class _HomePageState extends State<HomePage> {
                 ),
               ],
             ),
-            backgroundColor: Colors.black,
             onDragBackgroundColor: Colors.black87,
-            borderRadius: 10,
-            growingFactor: 20,
           ),
           // Picture-in-Picture Video
           FlutterFloaty(
@@ -142,7 +139,8 @@ class _HomePageState extends State<HomePage> {
                 shape: BoxShape.circle,
                 image: DecorationImage(
                   image: NetworkImage(
-                      'https://avatars.githubusercontent.com/u/9919?s=280&v=4'),
+                    'https://avatars.githubusercontent.com/u/9919?s=280&v=4',
+                  ),
                   fit: BoxFit.cover,
                 ),
               ),
