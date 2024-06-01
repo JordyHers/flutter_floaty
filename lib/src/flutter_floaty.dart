@@ -20,8 +20,8 @@ typedef WidgetBuilder = Widget Function(BuildContext context);
 ///
 /// [FlutterFloaty] allows users to interact with the widget through drag
 /// gestures. It supports customizations for the drag start, update, end,
-/// and hover events. It also accepts a builder function to display the content within
-/// the draggable area.
+/// and hover events. It also accepts a builder function to display the content
+/// within the draggable area.
 class FlutterFloaty extends StatefulWidget {
   /// Creates a floating draggable widget.
   ///
