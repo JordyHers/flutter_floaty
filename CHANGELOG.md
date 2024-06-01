@@ -1,3 +1,7 @@
+## 0.1.8
+
+* Add `isVisible` params
+
 ## 0.1.7
 
 * Improve readme content

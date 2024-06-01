@@ -13,6 +13,7 @@ This repository contains various examples of floating action buttons using the `
 - Changeable background colors
 - Optional shadow effects
 - Accessibility support
+- Visibility control with `isVisible` property
 
 ## Demo
 
@@ -378,6 +379,7 @@ Here are the parameters used in the `FlutterFloaty` widget:
 - **shadow**: `BoxShadow?` - Shadow for the container.
 - **scale**: `double` - Scale for the Transform.scale widget.
 - **onTap**: `VoidCallback?` - Callback when the widget is tapped.
+- **isVisible**: `bool?` - To hide and show the widget based on state.
 - **onPausePlaceHolder**: `Widget?` - Placeholder widget builder to show when the drag ends.
 
 ## Getting Started

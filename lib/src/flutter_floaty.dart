@@ -10,14 +10,17 @@ typedef DragUpdateCallback = void Function(DragUpdateDetails details);
 /// Signature for a function that handles the end of a drag event.
 typedef DragEndCallback = void Function(DragEndDetails details);
 
+/// Signature for a function that handles hover events.
+typedef HoverCallback = void Function({bool isHovering});
+
 /// Signature for a function that builds a widget with the provided context.
 typedef WidgetBuilder = Widget Function(BuildContext context);
 
 /// A widget that can be placed, dragged, and dropped anywhere on the screen.
 ///
 /// [FlutterFloaty] allows users to interact with the widget through drag
-/// gestures.It supports customizations for the drag start, update, and end
-/// events. It also accepts a builder function to display the content within
+/// gestures. It supports customizations for the drag start, update, end,
+/// and hover events. It also accepts a builder function to display the content within
 /// the draggable area.
 class FlutterFloaty extends StatefulWidget {
   /// Creates a floating draggable widget.
@@ -29,12 +32,14 @@ class FlutterFloaty extends StatefulWidget {
     this.onDragStart,
     this.onDragUpdate,
     this.onDragEnd,
+    this.onHover,
     this.initialX = 0,
     this.initialY = 0,
     this.initialWidth = 100,
     this.initialHeight = 100,
     this.backgroundColor = Colors.black,
     this.onDragBackgroundColor = Colors.grey,
+    this.onHoverBackgroundColor,
     this.accessibilityLabel,
     this.pinned = false,
     this.growingFactor = 20,
@@ -46,6 +51,7 @@ class FlutterFloaty extends StatefulWidget {
     this.scale = 1.0,
     this.onTap,
     this.onPausePlaceHolder,
+    this.isVisible = true,
   });
 
   /// Callback when the drag starts.
@@ -56,6 +62,9 @@ class FlutterFloaty extends StatefulWidget {
 
   /// Callback when the drag ends.
   final DragEndCallback? onDragEnd;
+
+  /// Callback when the widget is hovered over.
+  final HoverCallback? onHover;
 
   /// The builder function to display the content within the draggable area.
   final WidgetBuilder builder;
@@ -77,6 +86,9 @@ class FlutterFloaty extends StatefulWidget {
 
   /// Background color when the widget is being dragged.
   final Color onDragBackgroundColor;
+
+  /// Background color when the widget is hovered over.
+  final Color? onHoverBackgroundColor;
 
   /// Accessibility label for the widget.
   final String? accessibilityLabel;
@@ -111,6 +123,9 @@ class FlutterFloaty extends StatefulWidget {
   /// Placeholder widget builder to show when the drag ends.
   final Widget? onPausePlaceHolder;
 
+  /// Visibility of the widget.
+  final bool isVisible;
+
   @override
   State<FlutterFloaty> createState() => _FlutterFloatyState();
 }
@@ -124,6 +139,8 @@ class _FlutterFloatyState extends State<FlutterFloaty>
   late Color backgroundColor;
   late AnimationController _controller;
   late Animation<double> _animation;
+  late Animation<double> _xPositionAnimation;
+  late Animation<double> _yPositionAnimation;
 
   @override
   void initState() {
@@ -157,51 +174,51 @@ class _FlutterFloatyState extends State<FlutterFloaty>
     super.dispose();
   }
 
-  void _initAsserts(BuildContext context) {
-    assert(
-      context.findAncestorWidgetOfExactType<Stack>() != null,
-      'FlutterFloaty must be placed inside a Stack widget.',
-    );
-    final screenWidth = Config.dynamicWidth(context);
-    assert(
-      widget.initialWidth <= screenWidth,
-      'initialWidth (${widget.initialWidth}) must not be greater than screen '
-      'width ($screenWidth).',
-    );
-  }
-
   @override
   Widget build(BuildContext context) {
     _initAsserts(context);
-
     return Positioned(
       left: xPosition,
       top: yPosition,
-      child: GestureDetector(
-        onTap: widget.onTap,
-        onPanStart: _onPanStart,
-        onPanUpdate: (details) {
-          _onPanUpdate(details, context);
-        },
-        onPanEnd: _onPanEnd,
-        child: Semantics(
-          label: widget.accessibilityLabel,
-          child: Transform.scale(
-            scale: widget.scale,
-            child: Container(
-              margin: widget.margin,
-              padding: widget.padding,
-              width: width,
-              height: height,
-              decoration: BoxDecoration(
-                color: backgroundColor,
-                borderRadius: BorderRadius.circular(widget.borderRadius),
-                shape: widget.shape ?? BoxShape.rectangle,
-                boxShadow: widget.shadow != null ? [widget.shadow!] : [],
-              ),
-              child: Center(
-                child: widget.builder(context),
-              ),
+      child: Offstage(
+        offstage: !widget.isVisible,
+        child: MouseRegion(
+          onEnter: (_) => _onHover(true),
+          onExit: (_) => _onHover(false),
+          child: GestureDetector(
+            onTap: widget.onTap,
+            onPanStart: _onPanStart,
+            onPanUpdate: (details) {
+              _onPanUpdate(details, context);
+            },
+            onPanEnd: _onPanEnd,
+            child: AnimatedBuilder(
+              animation: _controller,
+              builder: (context, child) {
+                return Semantics(
+                  label: widget.accessibilityLabel,
+                  child: Transform.scale(
+                    scale: widget.scale,
+                    child: Container(
+                      margin: widget.margin,
+                      padding: widget.padding,
+                      width: width,
+                      height: height,
+                      decoration: BoxDecoration(
+                        color: backgroundColor,
+                        borderRadius:
+                            BorderRadius.circular(widget.borderRadius),
+                        shape: widget.shape ?? BoxShape.rectangle,
+                        boxShadow:
+                            widget.shadow != null ? [widget.shadow!] : [],
+                      ),
+                      child: Center(
+                        child: widget.builder(context),
+                      ),
+                    ),
+                  ),
+                );
+              },
             ),
           ),
         ),
@@ -225,10 +242,7 @@ class _FlutterFloatyState extends State<FlutterFloaty>
       backgroundColor = widget.backgroundColor;
     });
     if (widget.pinned) {
-      setState(() {
-        xPosition = widget.initialX;
-        yPosition = widget.initialY;
-      });
+      _animateTransition();
     }
     if (widget.onDragEnd != null) {
       widget.onDragEnd?.call(details);
@@ -239,13 +253,64 @@ class _FlutterFloatyState extends State<FlutterFloaty>
     setState(() {
       final newX = xPosition + details.delta.dx;
       final newY = yPosition + details.delta.dy;
-
       xPosition = newX.clamp(0.0, Config.dynamicWidth(context) - width);
       yPosition = newY.clamp(0.0, Config.dynamicHeight(context) - height);
     });
-
     if (widget.onDragUpdate != null) {
       widget.onDragUpdate?.call(details);
     }
+  }
+
+  void _onHover(bool isHovering) {
+    if (widget.onHover != null) {
+      widget.onHover?.call(isHovering: isHovering);
+    }
+    setState(() {
+      backgroundColor = isHovering
+          ? (widget.onHoverBackgroundColor ?? widget.backgroundColor)
+          : widget.backgroundColor;
+    });
+  }
+
+  void _animateTransition() {
+    _xPositionAnimation = Tween<double>(
+      begin: xPosition,
+      end: widget.initialX,
+    ).animate(
+      CurvedAnimation(
+        parent: _controller,
+        curve: Curves.easeInOut,
+      ),
+    );
+    _yPositionAnimation = Tween<double>(
+      begin: yPosition,
+      end: widget.initialY,
+    ).animate(
+      CurvedAnimation(
+        parent: _controller,
+        curve: Curves.easeInOut,
+      ),
+    );
+    _controller
+      ..addListener(() {
+        setState(() {
+          xPosition = _xPositionAnimation.value;
+          yPosition = _yPositionAnimation.value;
+        });
+      })
+      ..forward(from: 0);
+  }
+
+  void _initAsserts(BuildContext context) {
+    assert(
+      context.findAncestorWidgetOfExactType<Stack>() != null,
+      'FlutterFloaty must be placed inside a Stack widget.',
+    );
+    final screenWidth = Config.dynamicWidth(context);
+    assert(
+      widget.initialWidth <= screenWidth,
+      'initialWidth (${widget.initialWidth}) must not be greater than screen '
+      'width ($screenWidth).',
+    );
   }
 }
