@@ -170,48 +170,6 @@ class _HomePageState extends State<HomePage> {
             backgroundColor: Colors.blue,
             onDragBackgroundColor: Colors.blueAccent,
           ),
-          FlutterFloaty(
-            initialWidth: 100,
-            initialHeight: 100,
-            initialX: 200,
-            initialY: 200,
-            builder: (context) => const Center(
-              child: Text(
-                'Square',
-                style: TextStyle(color: Colors.white),
-              ),
-            ),
-            backgroundColor: Colors.red,
-            onDragBackgroundColor: Colors.redAccent,
-            borderRadius: 0,
-            growingFactor: 15,
-          ),
-          FlutterFloaty(
-            initialWidth: 60,
-            initialHeight: 60,
-            initialX: 100,
-            initialY: 300,
-            builder: (context) => const Icon(
-              Icons.add,
-              color: Colors.white,
-            ),
-            backgroundColor: Colors.green,
-            onDragBackgroundColor: Colors.greenAccent,
-            borderRadius: 30,
-            growingFactor: 10,
-          ),
-          FlutterFloaty(
-            initialWidth: 70,
-            initialHeight: 70,
-            builder: (context) => const Icon(
-              Icons.person,
-              size: 55,
-            ),
-            backgroundColor: Colors.transparent,
-            onDragBackgroundColor: Colors.transparent,
-            borderRadius: 35,
-            growingFactor: 5,
-          ),
         ],
       ),
     );
