@@ -13,8 +13,10 @@ This repository contains various examples of floating action buttons using the `
 - Changeable background colors
 - Optional shadow effects
 - Accessibility support
-- Visibility control with `isVisible` property
+- Visibility with `isVisible` property
 - onHover functionality 
+- Intrinsic boundaries
+
 
 ## Demo
 
@@ -27,7 +29,14 @@ This repository contains various examples of floating action buttons using the `
 A simple floating button with text and rounded corners.
 
 ```dart
+
+// Set up exact boundaries in which the widget is draggable
+final boundaries =  Rect.fromLTWH(0, 0, MediaQuery.of(context).size.width,
+    MediaQuery.of(context).size.height * 0.75,
+    );
+
 FlutterFloaty(
+  intrinsicBoundaries: boundaries,
   initialWidth: 200,
   initialHeight: 50,
   builder: (context) => const Text(
@@ -382,6 +391,8 @@ Here are the parameters used in the `FlutterFloaty` widget:
 - **onTap**: `VoidCallback?` - Callback when the widget is tapped.
 - **onHover**: `VoidCallback?` - Callback when the user hovers with mouse.
 - **isVisible**: `bool?` - To hide and show the widget based on state.
+- **intrinsicBoundaries**: `Rect?` - To determine the boundaries in which the widget is draggable
+- **enableAnimation**: `bool?` - To enable the growing effect on Widget drag.
 - **onPausePlaceHolder**: `Widget?` - Placeholder widget builder to show when the drag ends.
 
 ## Getting Started

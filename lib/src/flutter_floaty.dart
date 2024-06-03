@@ -42,7 +42,7 @@ class FlutterFloaty extends StatefulWidget {
     this.onHoverBackgroundColor,
     this.accessibilityLabel,
     this.pinned = false,
-    this.growingFactor = 20,
+    this.growingFactor = 2,
     this.margin,
     this.padding,
     this.borderRadius = 10,
@@ -52,6 +52,8 @@ class FlutterFloaty extends StatefulWidget {
     this.onTap,
     this.onPausePlaceHolder,
     this.isVisible = true,
+    this.intrinsicBoundaries,
+    this.enableAnimation = true,
   });
 
   /// Callback when the drag starts.
@@ -126,6 +128,12 @@ class FlutterFloaty extends StatefulWidget {
   /// Visibility of the widget.
   final bool isVisible;
 
+  /// Intrinsic boundaries within which the widget can be dragged.
+  final Rect? intrinsicBoundaries;
+
+  /// Disable Animation to avoid growing widget on drag
+  final bool enableAnimation;
+
   @override
   State<FlutterFloaty> createState() => _FlutterFloatyState();
 }
@@ -147,8 +155,8 @@ class _FlutterFloatyState extends State<FlutterFloaty>
     super.initState();
     xPosition = widget.initialX;
     yPosition = widget.initialY;
-    width = widget.initialWidth;
-    height = widget.initialHeight;
+    width = widget.initialWidth * widget.growingFactor;
+    height = widget.initialHeight * widget.growingFactor;
     backgroundColor = widget.backgroundColor;
 
     _controller = AnimationController(
@@ -161,10 +169,13 @@ class _FlutterFloatyState extends State<FlutterFloaty>
     );
 
     _controller.addListener(() {
-      setState(() {
-        width = widget.initialWidth * _animation.value;
-        height = widget.initialHeight * _animation.value;
-      });
+      if (widget.enableAnimation) {
+        setState(() {
+          width = widget.initialWidth * _animation.value * widget.growingFactor;
+          height =
+              widget.initialHeight * _animation.value * widget.growingFactor;
+        });
+      }
     });
   }
 
@@ -251,10 +262,18 @@ class _FlutterFloatyState extends State<FlutterFloaty>
 
   void _onPanUpdate(DragUpdateDetails details, BuildContext context) {
     setState(() {
+      final defaultBoundaries = Rect.fromLTWH(
+        0,
+        0,
+        Config.dynamicWidth(context),
+        Config.dynamicHeight(context) * 0.85,
+      );
       final newX = xPosition + details.delta.dx;
       final newY = yPosition + details.delta.dy;
-      xPosition = newX.clamp(0.0, Config.dynamicWidth(context) - width);
-      yPosition = newY.clamp(0.0, Config.dynamicHeight(context) - height);
+      final boundaries = widget.intrinsicBoundaries ?? defaultBoundaries;
+
+      xPosition = newX.clamp(boundaries.left, boundaries.right - width);
+      yPosition = newY.clamp(boundaries.top, boundaries.bottom - height);
     });
     if (widget.onDragUpdate != null) {
       widget.onDragUpdate?.call(details);
@@ -311,6 +330,19 @@ class _FlutterFloatyState extends State<FlutterFloaty>
       widget.initialWidth <= screenWidth,
       'initialWidth (${widget.initialWidth}) must not be greater than screen '
       'width ($screenWidth).',
+    );
+    assert(
+      widget.growingFactor <= screenWidth,
+      'initialWidth (${widget.initialWidth}) must not be greater than screen '
+      'width ($screenWidth).',
+    );
+
+    assert(
+      widget.growingFactor >= 1 &&
+          widget.growingFactor <= 2 &&
+          widget.enableAnimation == true,
+      'growingFactor (${widget.growingFactor}) must be between 1 and 2 and '
+      'animation should be enabled.',
     );
   }
 }

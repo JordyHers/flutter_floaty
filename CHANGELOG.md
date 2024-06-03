@@ -1,3 +1,9 @@
+## 0.1.9
+
+* Add `intrinsicBoundaries` params
+* Add `enableAnimation` params
+* clean code
+
 ## 0.1.8
 
 * Add `isVisible` params
