@@ -42,7 +42,7 @@ class FlutterFloaty extends StatefulWidget {
     this.onHoverBackgroundColor,
     this.accessibilityLabel,
     this.pinned = false,
-    this.growingFactor = 2,
+    this.growingFactor = 1,
     this.margin,
     this.padding,
     this.borderRadius = 10,

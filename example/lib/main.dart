@@ -135,7 +135,6 @@ class _HomePageState extends State<HomePage> {
               ),
             ),
             onDragBackgroundColor: Colors.black54,
-            growingFactor: 10,
           ),
           FlutterFloaty(
             initialWidth: 70,
@@ -154,7 +153,6 @@ class _HomePageState extends State<HomePage> {
             backgroundColor: Colors.transparent,
             onDragBackgroundColor: Colors.transparent,
             borderRadius: 35,
-            growingFactor: 5,
           ),
 
           FlutterFloaty(
