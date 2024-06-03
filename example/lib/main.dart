@@ -111,6 +111,8 @@ class _HomePageState extends State<HomePage> {
           ),
           // Picture-in-Picture Video
           FlutterFloaty(
+            enableAnimation: false,
+            growingFactor: 1,
             initialWidth: 200,
             initialHeight: 150,
             initialX: 100,

@@ -338,9 +338,7 @@ class _FlutterFloatyState extends State<FlutterFloaty>
     );
 
     assert(
-      widget.growingFactor >= 1 &&
-          widget.growingFactor <= 2 &&
-          widget.enableAnimation == true,
+      widget.growingFactor >= 1 && widget.growingFactor <= 2,
       'growingFactor (${widget.growingFactor}) must be between 1 and 2 and '
       'animation should be enabled.',
     );
