@@ -5,7 +5,7 @@ description:  >-
   This plugin provides a customizable Floating button to drag 
   on screen in flutter. This package is light and easy to use
 
-version: 0.1.8
+version: 0.1.9
 
 #package homepage:
 homepage: https://github.com/JordyHers/flutter_floaty
