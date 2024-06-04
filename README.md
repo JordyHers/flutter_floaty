@@ -46,7 +46,7 @@ FlutterFloaty(
   backgroundColor: Colors.blue,
   onDragBackgroundColor: Colors.blueAccent,
   borderRadius: 10,
-  growingFactor: 20,
+  growingFactor: 1.3,
 )
 ```
 
@@ -67,7 +67,7 @@ FlutterFloaty(
   backgroundColor: Colors.green,
   onDragBackgroundColor: Colors.greenAccent,
   borderRadius: 30,
-  growingFactor: 10,
+  growingFactor: 1.3,
 )
 ```
 
@@ -90,7 +90,7 @@ FlutterFloaty(
   backgroundColor: Colors.red,
   onDragBackgroundColor: Colors.redAccent,
   borderRadius: 0,
-  growingFactor: 15,
+
 )
 ```
 
@@ -113,7 +113,7 @@ FlutterFloaty(
   backgroundColor: Colors.purple,
   onDragBackgroundColor: Colors.purpleAccent,
   borderRadius: 40,
-  growingFactor: 20,
+  
 )
 ```
 
@@ -134,7 +134,6 @@ FlutterFloaty(
   backgroundColor: Colors.orange,
   onDragBackgroundColor: Colors.orangeAccent,
   borderRadius: 25,
-  growingFactor: 15,
   shadow: BoxShadow(
     color: Colors.black.withOpacity(0.5),
     spreadRadius: 5,
@@ -284,7 +283,6 @@ class _HomePageState extends State<HomePage> {
                      ),
                   ),
                   onDragBackgroundColor: Colors.black54,
-                  growingFactor: 10,
                ),
                FlutterFloaty(
                   initialWidth: 70,
@@ -303,7 +301,6 @@ class _HomePageState extends State<HomePage> {
                   backgroundColor: Colors.transparent,
                   onDragBackgroundColor: Colors.transparent,
                   borderRadius: 35,
-                  growingFactor: 5,
                ),
 
                FlutterFloaty(
@@ -330,7 +327,6 @@ class _HomePageState extends State<HomePage> {
                   backgroundColor: Colors.red,
                   onDragBackgroundColor: Colors.redAccent,
                   borderRadius: 0,
-                  growingFactor: 15,
                ),
                FlutterFloaty(
                   initialWidth: 60,
@@ -344,7 +340,6 @@ class _HomePageState extends State<HomePage> {
                   backgroundColor: Colors.green,
                   onDragBackgroundColor: Colors.greenAccent,
                   borderRadius: 30,
-                  growingFactor: 10,
                ),
                FlutterFloaty(
                   initialWidth: 70,
@@ -356,7 +351,6 @@ class _HomePageState extends State<HomePage> {
                   backgroundColor: Colors.transparent,
                   onDragBackgroundColor: Colors.transparent,
                   borderRadius: 35,
-                  growingFactor: 5,
                ),
             ],
          ),
