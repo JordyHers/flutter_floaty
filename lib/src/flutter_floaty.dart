@@ -317,9 +317,10 @@ class _FlutterFloatyState extends State<FlutterFloaty>
   }
 
   void _animateTransition() {
+    final limitAxisX = (Config.dynamicWidth(context) - width) / 2;
     _xPositionAnimation = Tween<double>(
       begin: xPosition,
-      end: widget.initialX,
+      end: widget.initialX.clamp(0, limitAxisX),
     ).animate(
       CurvedAnimation(
         parent: _controller,
