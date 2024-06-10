@@ -24,35 +24,16 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   static const backgroundColor = Color(0xFFF1EFE7);
-  bool isPlaying = false;
   double progress = 0;
-  Duration elapsed = Duration.zero;
-  final Duration totalDuration = const Duration(minutes: 3);
+  double width = 200;
+  double height = 50;
 
-  void togglePlayPause() {
+  void _resolveHeight() {
     setState(() {
-      isPlaying = !isPlaying;
-    });
-    if (isPlaying) {
-      _startProgress();
-    } else {
-      _stopProgress();
-    }
-  }
-
-  void _startProgress() {
-    Future.doWhile(() async {
-      await Future<void>.delayed(const Duration(seconds: 1));
-      if (!isPlaying) return false;
-      setState(() {
-        elapsed += const Duration(seconds: 1);
-        progress = elapsed.inSeconds / totalDuration.inSeconds;
-      });
-      return elapsed < totalDuration;
+      width = 400;
+      height = 100;
     });
   }
-
-  void _stopProgress() {}
 
   @override
   Widget build(BuildContext context) {
@@ -65,104 +46,14 @@ class _HomePageState extends State<HomePage> {
       ),
       body: Stack(
         children: [
-          // Music Player Control with Progress Bar
           FlutterFloaty(
-            initialWidth: 300,
-            initialHeight: 150,
-            initialX: 50,
-            initialY: 150,
-            builder: (context) => Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    IconButton(
-                      icon: Icon(
-                        isPlaying ? Icons.pause : Icons.play_arrow,
-                        color: Colors.white,
-                        size: 36,
-                      ),
-                      onPressed: togglePlayPause,
-                    ),
-                    const SizedBox(width: 20),
-                    const Text(
-                      'Now Playing: Flutter Beats',
-                      style: TextStyle(color: Colors.white),
-                    ),
-                  ],
-                ),
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 20),
-                  child: LinearProgressIndicator(
-                    value: progress,
-                    color: Colors.red,
-                    backgroundColor: Colors.grey,
-                  ),
-                ),
-                const SizedBox(height: 8),
-                Text(
-                  '${elapsed.inMinutes}:${(elapsed.inSeconds % 60).toString().padLeft(2, '0')} / ${totalDuration.inMinutes}:${(totalDuration.inSeconds % 60).toString().padLeft(2, '0')}',
-                  style: const TextStyle(color: Colors.white),
-                ),
-              ],
-            ),
-            onDragBackgroundColor: Colors.black87,
-          ),
-          // Picture-in-Picture Video
-          FlutterFloaty(
-            enableAnimation: false,
-            growingFactor: 2,
-            initialWidth: 200,
-            initialHeight: 150,
-            initialX: 100,
-            initialY: 350,
-            builder: (context) => Container(
-              decoration: BoxDecoration(
-                color: Colors.black,
-                borderRadius: BorderRadius.circular(10),
-                image: const DecorationImage(
-                  fit: BoxFit.cover,
-                  image: NetworkImage(
-                    'https://i3.ytimg.com/vi/erLk59H86ww/maxresdefault.jpg',
-                  ),
-                ),
-              ),
-              child: const Center(
-                child: Icon(
-                  Icons.play_circle_fill,
-                  color: Colors.white,
-                  size: 50,
-                ),
-              ),
-            ),
-            onDragBackgroundColor: Colors.amber,
-          ),
-          FlutterFloaty(
-            initialWidth: 70,
-            initialHeight: 70,
-            builder: (context) => Container(
-              decoration: const BoxDecoration(
-                shape: BoxShape.circle,
-                image: DecorationImage(
-                  image: NetworkImage(
-                    'https://avatars.githubusercontent.com/u/9919?s=280&v=4',
-                  ),
-                  fit: BoxFit.cover,
-                ),
-              ),
-            ),
-            backgroundColor: Colors.transparent,
-            onDragBackgroundColor: Colors.transparent,
-            borderRadius: 35,
-          ),
-
-          FlutterFloaty(
-            initialWidth: 200,
-            initialHeight: 50,
-            initialY: 100,
+            onTap: _resolveHeight,
+            width: width,
+            height: height,
+            initialY: 50,
             initialX: 100,
             pinned: true,
+            enableAnimation: false,
             builder: (context) => const Text(
               'Pinned Flutter Floaty 🎉',
               style: TextStyle(color: Colors.white),

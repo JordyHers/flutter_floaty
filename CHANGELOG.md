@@ -1,3 +1,11 @@
+## 0.2.0
+
+* change initialWidth to `width`
+* change initialHeight to `height`
+* locked widget intrinsic boundaries in growing factor
+* make dx , dy more dynamic
+* fix minor issues
+
 ## 0.1.10
 
 * polish readme File

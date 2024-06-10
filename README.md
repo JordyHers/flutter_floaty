@@ -37,8 +37,8 @@ final boundaries =  Rect.fromLTWH(0, 0, MediaQuery.of(context).size.width,
 
 FlutterFloaty(
   intrinsicBoundaries: boundaries,
-  initialWidth: 200,
-  initialHeight: 50,
+  width: 200,
+  height: 50,
   builder: (context) => const Text(
     'Flutter Floaty 🎉',
     style: TextStyle(color: Colors.white),
@@ -56,8 +56,8 @@ A circular button with an icon in the center.
 
 ```dart
 FlutterFloaty(
-  initialWidth: 60,
-  initialHeight: 60,
+  width: 60,
+  height: 60,
   initialX: 100,
   initialY: 300,
   builder: (context) => const Icon(
@@ -77,8 +77,8 @@ A square-shaped button with text in the center.
 
 ```dart
 FlutterFloaty(
-  initialWidth: 100,
-  initialHeight: 100,
+  width: 100,
+  height: 100,
   initialX: 200,
   initialY: 200,
   builder: (context) => const Center(
@@ -100,8 +100,8 @@ A circular button displaying an emoji.
 
 ```dart
 FlutterFloaty(
-  initialWidth: 80,
-  initialHeight: 80,
+  width: 80,
+  height: 80,
   initialX: 250,
   initialY: 400,
   builder: (context) => const Center(
@@ -123,8 +123,8 @@ A button with a shadow effect.
 
 ```dart
 FlutterFloaty(
-  initialWidth: 150,
-  initialHeight: 50,
+  width: 150,
+  height: 50,
   initialX: 50,
   initialY: 500,
   builder: (context) => const Text(
@@ -215,8 +215,8 @@ class _HomePageState extends State<HomePage> {
             children: [
                // Music Player Control with Progress Bar
                FlutterFloaty(
-                  initialWidth: 300,
-                  initialHeight: 150,
+                  width: 300,
+                  height: 150,
                   initialX: 50,
                   initialY: 150,
                   builder: (context) => Column(
@@ -259,8 +259,8 @@ class _HomePageState extends State<HomePage> {
                ),
                // Picture-in-Picture Video
                FlutterFloaty(
-                  initialWidth: 200,
-                  initialHeight: 150,
+                  width: 200,
+                  height: 150,
                   initialX: 100,
                   initialY: 350,
                   builder: (context) => Container(
@@ -285,8 +285,8 @@ class _HomePageState extends State<HomePage> {
                   onDragBackgroundColor: Colors.black54,
                ),
                FlutterFloaty(
-                  initialWidth: 70,
-                  initialHeight: 70,
+                  width: 70,
+                  height: 70,
                   builder: (context) => Container(
                      decoration: const BoxDecoration(
                         shape: BoxShape.circle,
@@ -304,8 +304,8 @@ class _HomePageState extends State<HomePage> {
                ),
 
                FlutterFloaty(
-                  initialWidth: 200,
-                  initialHeight: 50,
+                  width: 200,
+                  height: 50,
                   builder: (context) => const Text(
                      'Flutter Floaty 🎉',
                      style: TextStyle(color: Colors.white),
@@ -314,8 +314,8 @@ class _HomePageState extends State<HomePage> {
                   onDragBackgroundColor: Colors.blueAccent,
                ),
                FlutterFloaty(
-                  initialWidth: 100,
-                  initialHeight: 100,
+                  width: 100,
+                  height: 100,
                   initialX: 200,
                   initialY: 200,
                   builder: (context) => const Center(
@@ -329,8 +329,8 @@ class _HomePageState extends State<HomePage> {
                   borderRadius: 0,
                ),
                FlutterFloaty(
-                  initialWidth: 60,
-                  initialHeight: 60,
+                  width: 60,
+                  height: 60,
                   initialX: 100,
                   initialY: 300,
                   builder: (context) => const Icon(
@@ -342,8 +342,8 @@ class _HomePageState extends State<HomePage> {
                   borderRadius: 30,
                ),
                FlutterFloaty(
-                  initialWidth: 70,
-                  initialHeight: 70,
+                  width: 70,
+                  height: 70,
                   builder: (context) => const Icon(
                      Icons.person,
                      size: 55,
@@ -371,8 +371,8 @@ Here are the parameters used in the `FlutterFloaty` widget:
 - **builder**: `WidgetBuilder` - The builder function to display the content within the draggable area.
 - **initialX**: `double` - Initial horizontal position of the widget.
 - **initialY**: `double` - Initial vertical position of the widget.
-- **initialWidth**: `double` - Initial width of the widget.
-- **initialHeight**: `double` - Initial height of the widget.
+- **width**: `double` - Initial width of the widget.
+- **height**: `double` - Initial height of the widget.
 - **backgroundColor**: `Color` - Initial color of the widget.
 - **onDragBackgroundColor**: `Color` - Background color when the widget is being dragged.
 - **borderRadius**: `BorderRadius` - Border radius for the container.
