@@ -50,9 +50,8 @@ class _HomePageState extends State<HomePage> {
             onTap: _resolveHeight,
             width: width,
             height: height,
-            initialY: 50,
+            initialY: 100,
             initialX: 100,
-            pinned: true,
             enableAnimation: false,
             builder: (context) => const Text(
               'Pinned Flutter Floaty 🎉',
