@@ -114,7 +114,7 @@ void main() {
       ),
     );
 
-    final initialPosition = tester.getTopLeft(find.text('Floaty'));
+    tester.getTopLeft(find.text('Floaty'));
     await tester.drag(find.text('Floaty'), const Offset(300, 300));
     await tester.pumpAndSettle();
     final newPosition = tester.getTopLeft(find.text('Floaty'));
