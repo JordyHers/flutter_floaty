@@ -35,8 +35,8 @@ class FlutterFloaty extends StatefulWidget {
     this.onHover,
     this.initialX = 0,
     this.initialY = 0,
-    this.initialWidth = 100,
-    this.initialHeight = 100,
+    this.width = 100,
+    this.height = 100,
     this.backgroundColor = Colors.black,
     this.onDragBackgroundColor = Colors.grey,
     this.onHoverBackgroundColor,
@@ -78,10 +78,10 @@ class FlutterFloaty extends StatefulWidget {
   final double initialY;
 
   /// Initial width of the widget.
-  final double initialWidth;
+  final double width;
 
   /// Initial height of the widget.
-  final double initialHeight;
+  final double height;
 
   /// Initial color of the widget.
   final Color backgroundColor;
@@ -155,8 +155,8 @@ class _FlutterFloatyState extends State<FlutterFloaty>
     super.initState();
     xPosition = widget.initialX;
     yPosition = widget.initialY;
-    width = widget.initialWidth * widget.growingFactor;
-    height = widget.initialHeight * widget.growingFactor;
+    width = widget.width;
+    height = widget.height;
     backgroundColor = widget.backgroundColor;
 
     _controller = AnimationController(
@@ -170,13 +170,38 @@ class _FlutterFloatyState extends State<FlutterFloaty>
 
     _controller.addListener(() {
       if (widget.enableAnimation) {
+        final newWidth = widget.width * _animation.value * widget.growingFactor;
+        final newHeight =
+            widget.height * _animation.value * widget.growingFactor;
         setState(() {
-          width = widget.initialWidth * _animation.value * widget.growingFactor;
-          height =
-              widget.initialHeight * _animation.value * widget.growingFactor;
+          width = newWidth.clamp(0.0, Config.dynamicWidth(context));
+          height = newHeight.clamp(0.0, Config.dynamicHeight(context));
         });
       }
     });
+  }
+
+  @override
+  void didUpdateWidget(covariant FlutterFloaty oldWidget) {
+    super.didUpdateWidget(oldWidget);
+
+    if (oldWidget.height != widget.height || oldWidget.width != widget.width) {
+      setState(() {
+        width = widget.width;
+        height = widget.height;
+
+        final defaultBoundaries = Rect.fromLTWH(
+          0,
+          0,
+          Config.dynamicWidth(context),
+          Config.dynamicHeight(context) * 0.85,
+        );
+        final boundaries = widget.intrinsicBoundaries ?? defaultBoundaries;
+
+        xPosition = xPosition.clamp(boundaries.left, boundaries.right - width);
+        yPosition = yPosition.clamp(boundaries.top, boundaries.bottom - height);
+      });
+    }
   }
 
   @override
@@ -327,13 +352,8 @@ class _FlutterFloatyState extends State<FlutterFloaty>
     );
     final screenWidth = Config.dynamicWidth(context);
     assert(
-      widget.initialWidth <= screenWidth,
-      'initialWidth (${widget.initialWidth}) must not be greater than screen '
-      'width ($screenWidth).',
-    );
-    assert(
-      widget.growingFactor <= screenWidth,
-      'initialWidth (${widget.initialWidth}) must not be greater than screen '
+      widget.width <= screenWidth,
+      'initialWidth (${widget.width}) must not be greater than screen '
       'width ($screenWidth).',
     );
 
