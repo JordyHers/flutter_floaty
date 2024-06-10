@@ -52,6 +52,7 @@ class _HomePageState extends State<HomePage> {
             height: height,
             initialY: 100,
             initialX: 100,
+            pinned: true,
             enableAnimation: false,
             builder: (context) => const Text(
               'Pinned Flutter Floaty 🎉',
